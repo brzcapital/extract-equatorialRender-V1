@@ -2,12 +2,20 @@
   "name": "extract-equatorialRender-vE3-refined",
   "version": "1.0.0",
   "type": "module",
-  "engines": {
-    "node": "22.20.0"
-  },
   "scripts": {
     "start": "node index.mjs"
   },
+  "env": {
+    "PORT": "10000",
+    "USE_GPT": "false",
+    "OPENAI_API_KEY": "",
+    "PRIMARY_MODEL": "gpt-4o-mini",
+    "FALLBACK_MODEL": "gpt-5-mini",
+    "LOG_RING_SIZE": "200"
+  },
+  ...
+}
+
   "dependencies": {
     "busboy": "^1.6.0",
     "express": "^4.19.2",
