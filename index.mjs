@@ -1,10 +1,21 @@
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const { env } = require("./package.json");
+
+export const ENV = {
+  PORT: env.PORT || "10000",
+  USE_GPT: env.USE_GPT === "true",
+  OPENAI_API_KEY: env.OPENAI_API_KEY || "",
+  PRIMARY_MODEL: env.PRIMARY_MODEL || "gpt-4o-mini",
+  FALLBACK_MODEL: env.FALLBACK_MODEL || "gpt-5-mini",
+  LOG_RING_SIZE: parseInt(env.LOG_RING_SIZE || "200", 10)
+};
 import express from "express";
 import multer from "multer";
 import morgan from "morgan";
 import cors from "cors";
 import crypto from "crypto";
 import { createRequire } from "module";
-import { ENV } from "./config/env.mjs";
 import { extrairCamposLocais } from "./services/localParser.mjs";
 import { jsonrepair } from "jsonrepair";
 
