@@ -1,0 +1,21 @@
+{
+  "name": "extract-equatorialRender-vE3-refined",
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": "22.20.0"
+  },
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "busboy": "^1.6.0",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "pdfjs-dist": "^4.8.69",
+    "jsonrepair": "^3.6.1",
+    "openai": "^4.58.1",
+    "cors": "^2.8.5"
+  }
+}
