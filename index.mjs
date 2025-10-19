@@ -23,6 +23,8 @@ const ENV = {
 
 // PDF parser (somente local)
 
+import { processFaturaPDF } from "./services/localparser.mjs";
+
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
 const ring = [];
@@ -92,15 +94,14 @@ app.get("/logs", (req, res) => {
 
 app.post("/extract-local", upload.single("fatura"), async (req, res) => {
   try {
-    if (!req.file) return res.status(400).json({ error: "Arquivo PDF ausente." });
-    const texto = await extractTextWithPdfjs(req.file.buffer);
-    const dados = extrairCamposLocais(texto);
-    res.json({ ok: true, dados });
+    const buffer = req.file.buffer;
+    const resultado = await processFaturaPDF(buffer);
+    res.json(resultado);
   } catch (err) {
-    log("error", "Falha ao processar fatura", { err: String(err) });
-    res.status(500).json({ error: "Falha ao processar a fatura." });
+    res.status(500).json({ error: "Falha ao processar fatura." });
   }
 });
+
 
 const port = parseInt(ENV.PORT, 10) || 10000;
 app.listen(port, () => console.log(`🚀 Servidor rodando na porta ${port}`));
