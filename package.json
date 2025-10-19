@@ -1,7 +1,7 @@
 {
   "name": "extract-equatorialRender-v1",
   "version": "1.0.0",
-  "description": "Servidor Node.js para extração local de dados de faturas Equatorial Goiás com fallback GPT",
+  "description": "Servidor Node.js para extração local de faturas Equatorial Goiás com fallback GPT",
   "type": "module",
   "main": "index.mjs",
   "scripts": {
@@ -16,6 +16,6 @@
     "morgan": "^1.10.0"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": "22.x"
   }
 }
