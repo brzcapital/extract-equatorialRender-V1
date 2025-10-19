@@ -19,6 +19,7 @@
   "morgan": "^1.10.0",
   "multer": "^1.4.5-lts.1",
   "pdfjs-dist": "4.3.136",
+  "openai":"^4.52.0"
   "cors": "^2.8.5"
 },
   "engines": {
