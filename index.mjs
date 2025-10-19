@@ -7,6 +7,11 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const { env } = require("./package.json");
 
+// --- Ajuste PDFJS ---
+import * as pdfjsLib from "pdfjs-dist";
+import pdfjsWorker from "pdfjs-dist/build/pdf.worker.mjs";
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+
 const ENV = {
   PORT: env.PORT || "10000",
   USE_GPT: env.USE_GPT === "true",
@@ -17,9 +22,6 @@ const ENV = {
 };
 
 // PDF parser (somente local)
-const pdfjs = require("pdfjs-dist/legacy/build/pdf.js");
-const pdfjsWorker = require("pdfjs-dist/legacy/build/pdf.worker.js");
-pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
